@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+from utils.similar_items import *
+from utils.feature_vector import *
+
 
 model_path = './models/'
 path = './data/mytheresa/mytheresa_preprocessed/'
@@ -12,8 +15,8 @@ vecs = np.load(model_path+"mytheresa_raw_resnet50_avgpool.npy", allow_pickle=Tru
 
 
 #== play =================================================================
-testk = list(vecs.keys())[0] #'006.jpg'
-testv = feature_vector(path+testk)
+testk = list(vecs.keys())[1000] #'006.jpg'
+testv = get_feature_vector(path+testk)
 
 # cosine similarity
 items_in_order = cosine_similarity(testv, vecs)
